@@ -33,3 +33,44 @@ model Summary { 
   liquidity     Float  
   @@map("summary") 
 }
+
+
+// 定义 SectorDetails 模型 (扇区详单)
+model SectorDetails {
+  id              Int      @id @default(autoincrement())
+  node_id         String
+  sectorid        Float
+  expiration_date Float
+  expire30        Float
+  deals           String
+  updatedate      DateTime  @default(now())
+  @@map("f_sector_details")
+}
+
+
+// 定义 SectorSummary 模型 (扇区统计)
+model SectorSummary {
+  id            Int      @id @default(autoincrement())
+  node_id       String
+  sector_sum    Float
+  expiration_sum Float    
+  updatedate    DateTime @default(now())
+  @@map("f_sector_summary")
+}
+
+model f_node_stats {  
+  id                       Int      @id @default(autoincrement()) @map("id")  
+  node_id                  String  
+  power                    Decimal  
+  owner_balance            Decimal  
+  miner_balance            Decimal
+  pledge_balance           Decimal  
+  power_change_7_days      Decimal  
+  power_change_10_days     Decimal  
+  power_change_ratio_7_days Decimal  
+  power_change_ratio_10_days Decimal  
+  lucky_value_7_days       Decimal  
+  lucky_value_30_days      Decimal  
+  date                     DateTime @map("date")  
+  @@map("f_node_stats")
+}

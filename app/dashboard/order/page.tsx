@@ -1,9 +1,9 @@
 // app\dashboard\filblock\page.tsx
 
-import ListPage from './list';
+import ListPage from '../../components/filblock/list';
 
 // 定义 FilBlock 页面组件
-export default async function FilBlockPage() {
+export default async function OrderPage() {
   return (
     <div>
       {/* <h1>FilBlock Dashboard</h1> */}

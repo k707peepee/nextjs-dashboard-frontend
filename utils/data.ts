@@ -11,14 +11,15 @@ import {
   } from './definitions';  
     
   // 假设这个函数是用来根据一些条件生成表格数据的  
-  export const createTableData = (filBlocks: FilBlocksTableData): { myBlock: FilBlocksTableData, otherBlock: FilBlocksTableData } => {  
+  // export const createTableData = (filBlocks: FilBlocksTableData): { myBlock: FilBlocksTableData, otherBlock: FilBlocksTableData } => {  
+  export const createTableData = (filBlocks: FilBlocksTableData): { myBlock: FilBlocksTableData} => {
     // 根据 isOurNode 字段对 filBlocks 进行分类  
     const myBlock = filBlocks.filter(block => block.isOurNode === true);  
-    const otherBlock = filBlocks.filter(block => block.isOurNode === false);  
+    // const otherBlock = filBlocks.filter(block => block.isOurNode === false);  
     
     return {  
       myBlock,  
-      otherBlock  
+      // otherBlock  
     };  
   };  
     

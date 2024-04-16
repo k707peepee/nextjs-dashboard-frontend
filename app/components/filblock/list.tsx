@@ -3,16 +3,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { FilBlock } from '@/utils/definitions';
-import Pagination from './Pagination'; // 引入 Pagination 组件
+import Pagination from '../Pagination'; // 引入 Pagination 组件
 
 // 定义列表页面组件
 export default function ListPage() {
     const [myBlock, setMyBlock] = useState<FilBlock[]>([]);
-    const [otherBlock, setOtherBlock] = useState<FilBlock[]>([]);
+    // const [otherBlock, setOtherBlock] = useState<FilBlock[]>([]);
     const [myBlockPage, setMyBlockPage] = useState(1); // 当前真实节点表格页码
     const [otherBlockPage, setOtherBlockPage] = useState(1); // 当前非真实节点表格页码
     const [myBlockLength, setMyBlockLength] = useState(0); // 真实节点数据条数
-    const [otherBlockLength, setOtherBlockLength] = useState(0); // 非真实节点数据条数
+    // const [otherBlockLength, setOtherBlockLength] = useState(0); // 非真实节点数据条数
 
     const itemsPerPage = 15; // 每页显示的数据条数
 
@@ -25,15 +25,16 @@ export default function ListPage() {
                 if (!response.ok) {
                     throw new Error('获取数据失败');
                 }
-                const { myBlock, otherBlock } = await response.json();
+                // const { myBlock, otherBlock } = await response.json();
+                const { myBlock } = await response.json();
 
                 // 对数据进行排序，让最新的时间排在前面
                 const sortedsetMyBlock = myBlock.sort((a: any, b: any) => new Date(b.blockTime).getTime() - new Date(a.blockTime).getTime());
-                const sortedOtherBlock = otherBlock.sort((a: any, b: any) => new Date(b.blockTime).getTime() - new Date(a.blockTime).getTime());
+                // const sortedOtherBlock = otherBlock.sort((a: any, b: any) => new Date(b.blockTime).getTime() - new Date(a.blockTime).getTime());
 
                 // 设置数据长度
                 setMyBlockLength(sortedsetMyBlock.length);
-                setOtherBlockLength(sortedOtherBlock.length);
+                // setOtherBlockLength(sortedOtherBlock.length);
 
                 // console.log("真实节点数据条数");
                 // console.log(sortedsetMyBlock.length);
@@ -42,10 +43,10 @@ export default function ListPage() {
                 
                 // 对排序后的数据进行切片以确保每页只显示指定数量的数据
                 const slicedMyBlock = sortedsetMyBlock.slice((myBlockPage - 1) * itemsPerPage, myBlockPage * itemsPerPage);
-                const slicedOtherBlock = sortedOtherBlock.slice((otherBlockPage - 1) * itemsPerPage, otherBlockPage * itemsPerPage);
+                // const slicedOtherBlock = sortedOtherBlock.slice((otherBlockPage - 1) * itemsPerPage, otherBlockPage * itemsPerPage);
 
                 setMyBlock(slicedMyBlock);
-                setOtherBlock(slicedOtherBlock);
+                // setOtherBlock(slicedOtherBlock);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

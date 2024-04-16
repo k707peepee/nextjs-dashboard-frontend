@@ -1,16 +1,20 @@
-// app\dashboard\(summary)\page.tsx
+import Image from "next/image";
+import LabelLineChart from "../components/dashboard/LabelLineChart";
+import CardPage from "../components/dashboard/card";
+import LuckBarChart from "../components/dashboard/LuckBarChart";
 
-import CardPage from './card';
-import BlockBrowser from './blockbrowser'
-
-// 定义 FilBlock 页面组件
-export default async function SummaryPage() {
+export default function Home() {
   return (
-    <div>
-      {/* <h1>Dashboard</h1> */}
-      <CardPage /> {/* 包含列表页面组件 */}
-      <BlockBrowser /> {/* 包含区块浏览器页面组件 */}
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div>
+        <CardPage />
+      </div>
+      <div className="mt-20">
+        <LabelLineChart />
+      </div>
+      <div className="mt-20">
+        <LuckBarChart />
+      </div>
+    </main>
   );
 }
-

@@ -39,11 +39,12 @@ export const GET = async (req: Request) => {
         }));
 
         // 使用 createTableData 函数处理processedFilBlocks数据
-        const { myBlock, otherBlock } = createTableData(processedFilBlocks);
+        // const { myBlock, otherBlock } = createTableData(processedFilBlocks);
+        const { myBlock } = createTableData(processedFilBlocks);
 
         return NextResponse.json({
             myBlock,
-            otherBlock,
+            // otherBlock,
         }, { status: 200 });
     } catch (error: any) {
         console.log(error);
